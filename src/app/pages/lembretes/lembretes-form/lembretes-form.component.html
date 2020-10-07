@@ -1,0 +1,37 @@
+  <!-- Modal abaixo -->
+  <po-modal
+  p-title="Options"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+  p-hide-close="true">
+
+
+  <!-- Formulario dentro da Modal -->
+  <form [formGroup]="form" #f>
+
+    <div class="po-row">
+      Aqui dados do form: {{ form.value | json }}
+    </div>
+
+    <!-- CheckBox Aqui -->
+    <div class="po-row">
+      <po-combo *ngIf="currentAction === 'new'" class="po-md-12" name="prioridade" formControlName="prioridade" p-label="Prioridade:" p-required="true"
+        [p-options]="prioridadeOptions" p-disabled="false">
+      </po-combo>
+      <po-combo *ngIf="currentAction === 'edit'" class="po-md-12" name="prioridade" formControlName="prioridade" p-label="Prioridade:" p-required="true"
+        [p-options]="prioridadeOptions" p-disabled="true">
+      </po-combo>
+    </div>
+
+    <div class="po-row">
+      <po-input class="po-md-6" name="titulo" formControlName="titulo" p-clean p-label="Título" p-required>
+      </po-input>
+    </div>
+
+    <div class="po-row">
+      <po-textarea class="po-md-12" name="descricao" formControlName="descricao" p-label="Descrição:"
+        p-rows="8">
+      </po-textarea>
+    </div>
+  </form>
+</po-modal>

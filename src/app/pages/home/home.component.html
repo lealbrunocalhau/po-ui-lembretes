@@ -1,3 +1,24 @@
-<po-page-default p-title="AppName">
-  <p> Agora sim - estamos na Home </p>
+<po-page-default p-title="Prótipo com PO-UI - Bruno Leal">
+
+  <div class="po-row">
+    <p> Agora sim!!! </p>
+    <p>Seja bem vindo a esse prótipo de app, onde poderemos criar e editar lembretes!</p>
+    <p>Os dados de exemplo estão mocados, utilizando o <b>AngularInMemoryDatabase</b>.</p>
+    <p>Será possível adicionar novos dados, porém ao atualizar a aplicação a mesma retornará ao estado inicial.</p>
+    <p>Clique no botão abaixo para ir para listagem de Lembretes</p>
+  </div>
+
+  <div class="po-row" style="display: flex; align-items: center; justify-content: center;">
+    <po-button
+    class="po-m-1"
+    p-disabled="boolean"
+    p-icon="po-icon-plus-circle"
+    p-label="Acessar Modulo Lembretes"
+    p-loading="loading"
+
+    p-type="primary"
+    routerLink="lembretes">
+    </po-button>
+  </div>
+
 </po-page-default>

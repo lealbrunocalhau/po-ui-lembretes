@@ -12,8 +12,8 @@ export class MenuComponent {
   constructor() { }
 
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Listagem', action: this.onClick.bind(this) },
-    { label: 'Adicionar', action: this.onClick.bind(this) }
+    { label: 'Home', link: '/' },
+    { label: 'Listagem', link: '/lembretes' }
   ];
 
   private onClick(): void {

@@ -10,6 +10,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from '../in-memory-database';
 
 import { PoModule } from '@po-ui/ng-components';
+import { PoButtonModule } from '@po-ui/ng-components';
 
 @NgModule({
   declarations: [],
@@ -21,12 +22,14 @@ import { PoModule } from '@po-ui/ng-components';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
     PoModule,
+    PoButtonModule
   ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    PoModule
+    PoModule,
+    PoButtonModule
   ]
 })
 export class CoreModule { }

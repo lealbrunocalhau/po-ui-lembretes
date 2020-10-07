@@ -6,16 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { PoModule } from '@po-ui/ng-components';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
