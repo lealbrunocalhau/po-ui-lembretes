@@ -20,19 +20,15 @@ export class LembretesFormComponent implements OnInit {
   submittingForm = false;
   lembrete: Lembrete;
 
-
   constructor(
     private poNotification: PoNotificationService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private lembreteService: LembreteService
-  ) {
-
-  }
+  ) { }
 
   @ViewChild(PoModalComponent, { static: true }) poModal: PoModalComponent;
-
 
   ngOnInit(): void {
     this.setCurrentAction();
@@ -62,16 +58,10 @@ export class LembretesFormComponent implements OnInit {
   private buildLembreteForm(): void {
     this.form = this.fb.group({
       id: [''],
-      prioridade: ['', Validators.compose(
-        [
-          Validators.required,
-        ]
-      )
-      ],
+      prioridade: ['', Validators.required],
       titulo: ['', Validators.required],
       descricao: ['', Validators.required]
     });
-
   }
 
   private loadLembrete(): void {
@@ -83,9 +73,8 @@ export class LembretesFormComponent implements OnInit {
           (resource) => {
             this.lembrete = resource;
             this.form.patchValue(resource);
-            // binds loaded resource data to resourceForm
           },
-          (error) => alert('Ocorreu um erro no servidor, tente mais tarde. (category-form->LoadCategory())')
+          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
         );
     }
   }
@@ -121,13 +110,11 @@ export class LembretesFormComponent implements OnInit {
     label: 'Salvar'
   };
 
-
   closeModal(): void {
     this.form.reset();
     this.poModal.close();
     this.router.navigateByUrl('/lembretes');
   }
-
 
   notificacao(): void {
     setTimeout(() => {
@@ -139,12 +126,10 @@ export class LembretesFormComponent implements OnInit {
     }, 200);
   }
 
-
   public abrirModal(): void {
     this.form.reset();
     this.poModal.open();
   }
-
 
   load(): void {
     const data = localStorage.getItem('lembretes');
@@ -155,7 +140,6 @@ export class LembretesFormComponent implements OnInit {
       this.lembretes = [];
     }
   }
-
 
   submitForm(): void {
     this.submittingForm = true;
@@ -173,20 +157,17 @@ export class LembretesFormComponent implements OnInit {
     lembrete.id = id;
     this.lembreteService.create(lembrete)
       .subscribe(
-        success => {},
-        error => {console.log('Deu erro')}
+        success => { },
+        error => { console.log('Deu erro'); }
       );
   }
-
 
   private updateLembrete(): void {
     const lembrete: Lembrete = Lembrete.fromJson(this.form.value);
     this.lembreteService.update(lembrete)
       .subscribe(
-        success => {},
-        error => {console.log('Deu erro')}
+        success => { },
+        error => { console.log('Deu erro'); }
       );
   }
-
-
 }
