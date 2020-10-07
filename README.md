@@ -1,27 +1,20 @@
-# Totvs2
+# Prototipo com PO-UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+Olá, meu nome é Bruno Leal, tenho estudado desenvolvimento de software por volta de 2 anos e meio, quando conheci o Angular,
+porém logo percebi que somente o frontend não atenderia minhas expectativas. 
 
-## Development server
+Estudei um pouco de PHP(Laravel), mas logo conheci o Framework NestJS e acredito muito nessa Stack junto com o Angular.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Além disso, tenho estudado conceitos de Microservices, Docker, K8s, DevOps, Cloud(Oracle, GCP, Aws), Mensageria(RabitMQ).
 
-## Code scaffolding
+As vezes me cobro que gostaria de estar em um nível mais avançado mas ao mesmo tempo, tento entender que é bastante informação para ser absorvida.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tenho alguns prototipos que podem ser acessados nesse  github: https://github.com/lealbrunocalhau. A maioria já com Docker.
 
-## Build
+E tenho um protótipo mais completo, porém ainda não esta 100% terminado que pode ser acessado através do ip: http://140.238.190.189/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Espero que gostem, amo tecnologia, já fui consultor por longos anos, mas sempre me incomodei com o fato de não saber de fato desenvolver.  Então aqui estou para o próximo desafio.
 
-## Running unit tests
+Abs,
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Bruno Leal
