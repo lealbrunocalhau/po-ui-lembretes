@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Lembrete } from 'src/app/model/lembrete.model';
-import { LembretesFormComponent } from '../lembretes-form/lembretes-form.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class LembreteService {
   ) {
   }
 
-
   getAll(search?: string): Observable<any> {
     return this.http.get(this.apiPath, {params: {q: search}});
   }
@@ -27,12 +25,10 @@ export class LembreteService {
   }
 
   create(lembrete: Lembrete): Observable<any> {
-    console.log('Entrei no Service Create');
     return this.http.post(this.apiPath, lembrete);
   }
 
   update(lembrete: Lembrete): Observable<any> {
-    console.warn('Entrei no service Lembrete')
     const url = `${this.apiPath}/${lembrete.id}`;
     return this.http.put(url, lembrete).pipe(
       map(() => lembrete),

@@ -49,7 +49,7 @@ export class LembretesFormComponent implements OnInit {
   }
 
   // Precisa Private Methods
-  protected setCurrentAction(): void {
+  private setCurrentAction(): void {
     // verificar a rota que chegou, para saber se está editando ou adicionando
     if (this.route.snapshot.url[0].path === 'new') {
       this.currentAction = 'new';
@@ -59,7 +59,7 @@ export class LembretesFormComponent implements OnInit {
   }
 
   // Precisa
-  protected buildLembreteForm(): void {
+  private buildLembreteForm(): void {
     this.form = this.fb.group({
       id: [''],
       prioridade: ['', Validators.compose(
@@ -74,14 +74,13 @@ export class LembretesFormComponent implements OnInit {
 
   }
 
-  protected loadLembrete(): void {
+  private loadLembrete(): void {
     if (this.currentAction === 'edit') {
       this.route.paramMap.pipe(
         switchMap(params => this.lembreteService.getById(+params.get('id')))
       )
         .subscribe(
           (resource) => {
-            console.log('Com sucesso no LoadLembrete');
             this.lembrete = resource;
             this.form.patchValue(resource);
             // binds loaded resource data to resourceForm
@@ -91,16 +90,13 @@ export class LembretesFormComponent implements OnInit {
     }
   }
 
-
   // Prioridade Options
   // tslint:disable-next-line:member-ordering
   public readonly prioridadeOptions: Array<PoComboOption> = [
-    { value: 'baixa', label: 'Baixa' },
-    { value: 'média', label: 'Média' },
-    { value: 'alta', label: 'Alta' }
+    { value: 'Baixa', label: 'Baixa' },
+    { value: 'Média', label: 'Média' },
+    { value: 'Alta', label: 'Alta' }
   ];
-
-
 
   // Propriedade Confirm e Close do Modal
   // tslint:disable-next-line:member-ordering
@@ -127,7 +123,6 @@ export class LembretesFormComponent implements OnInit {
 
 
   closeModal(): void {
-    console.warn('teste no close');
     this.form.reset();
     this.poModal.close();
     this.router.navigateByUrl('/lembretes');
@@ -135,7 +130,6 @@ export class LembretesFormComponent implements OnInit {
 
 
   notificacao(): void {
-    console.warn('Validar current action aqui', this.currentAction);
     setTimeout(() => {
       if (this.currentAction === 'edit') {
         this.poNotification.success(`Seu lembrete foi atualizado com sucesso.`);
@@ -148,7 +142,6 @@ export class LembretesFormComponent implements OnInit {
 
   public abrirModal(): void {
     this.form.reset();
-    console.log('Entrei no abrirModal');
     this.poModal.open();
   }
 
@@ -163,59 +156,35 @@ export class LembretesFormComponent implements OnInit {
     }
   }
 
-  // Nova implementação
-
 
   submitForm(): void {
-    console.log('Entrei no SubmitForm');
-    // quando o usuario clicar no botao de salvar
     this.submittingForm = true;
-
     // verificar se esta editando ou criando category
     if (this.currentAction === 'new') {
       this.createLembrete();
     } else {
-      console.warn('No submit Form porem UpdateLembrete precisa ser implementado');
-      // currentAction == 'edit'
       this.updateLembrete();
     }
   }
 
-
-  protected createLembrete(): void {
-
-    console.warn('2222', this.lembretes);
+  private createLembrete(): void {
     const id = this.lembretes.length + 1;
-    // vai precisar criar um objeto do tipo category e enviar atraves do categoryService
     const lembrete: Lembrete = Lembrete.fromJson(this.form.value);
     lembrete.id = id;
-    console.log('Olhar aqui o lembrete 111111', lembrete);
-
     this.lembreteService.create(lembrete)
       .subscribe(
-        success => console.log('Muito bem Bruno'),
-        error => console.log('Deu erro')
+        success => {},
+        error => {console.log('Deu erro')}
       );
-
-
-    // this.resourceService.create(resource)
-    //   .subscribe(
-    //     // tslint:disable-next-line:no-shadowed-variable
-    //     resource => this.actionsForSuccess(resource),
-    //     error => this.actionsForError(error)
-    //   );
-
   }
 
 
-
-  protected updateLembrete() {
+  private updateLembrete(): void {
     const lembrete: Lembrete = Lembrete.fromJson(this.form.value);
     this.lembreteService.update(lembrete)
       .subscribe(
-        // tslint:disable-next-line:no-shadowed-variable
-        resource => console.log('Muito bem estou no updateLembrete com sucesso no subcribe')//this.actionsForSuccess(resource),
-        // error => this.actionsForError(error)
+        success => {},
+        error => {console.log('Deu erro')}
       );
   }
 

@@ -1,50 +1,45 @@
 <po-page-default p-title="Lista de Lembretes">
 
-  <!-- Botao para criar Lembrete -->
   <div class="po-row">
-    <div>
       <po-button [routerLink]="['/lembretes/new']" p-disabled="boolean" p-icon="po-icon-plus-circle"
         p-label="Criar Lembrete" p-loading="boolean" p-small="boolean" p-type="primary">
       </po-button>
-    </div>
   </div>
 
-
-  <!-- Tentando implementar a busca -->
   <form [formGroup]="searchForm">
     <div class="po-row">
       <po-input class="po-md-12" formControlName="searchControl" p-clean p-icon="po-icon-search"
-        (p-change-model)="bruno()" [(ngModel)]="searchQuery"> </po-input>
+        (p-change-model)="search()" [(ngModel)]="searchQuery"> </po-input>
     </div>
-    <!-- <form [formGroup]="searchForm">
-    <input class="po-mb-1" formControlName="searchControl" placeholder="Search" type="text" (onchange)="bruno()"> -->
   </form>
-
-
 
   <po-divider>
   </po-divider>
-  <!-- Listagem de Itens aqui Devera virar um componente-->
-  <div class="po-mt-5" *ngIf="lembretes.length === 0"> Nenhum lembrete cadastrado. Clique no botão acima para adicionar
+
+  <div class="row">
+    <div class="col-xs-12 col-12">
+      <div class="content-wrapper">
+        <po-list-view *ngIf="returnedArray?.length > 0" p-property-title="name" [p-items]="returnedArray">
+          <ng-template p-list-view-content-template let-item>
+            <!-- Botao para Editar, devera executar um load no objeto. -->
+            <po-button class="po-ml-1" [routerLink]="[item.id,'edit']" p-disabled="boolean" p-icon="po-icon-edit"
+              p-label="Editar Lembrete" p-loading="boolean" p-small="boolean" p-type="string"> teste
+            </po-button>
+
+            <div class="po-row">
+              <po-info class="po-sm-6" p-label="Titulo" [p-value]="item.titulo"></po-info>
+              <po-info class="po-sm-6" p-label="Prioridade" [p-value]="item.prioridade"></po-info>
+            </div>
+          </ng-template>
+
+          <ng-template p-list-view-detail-template let-item [p-show-detail]="showDetail">
+            <div class="po-row">
+              <po-info class="po-md-12" p-label="Descrição" [p-value]="item.descricao"></po-info>
+            </div>
+          </ng-template>
+        </po-list-view>
+      </div>
+      <pagination [totalItems]="lembretes.length" [itemsPerPage]="1" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
   </div>
-
-  <po-list-view *ngIf="lembretes.length > 0" p-property-title="name" [p-items]="lembretes">
-    <ng-template p-list-view-content-template let-item>
-      <!-- Botao para Editar, devera executar um load no objeto. -->
-      <po-button class="po-ml-1" [routerLink]="[item.id,'edit']" p-disabled="boolean" p-icon="po-icon-edit"
-        p-label="Editar Lembrete" p-loading="boolean" p-small="boolean" p-type="string"> teste
-      </po-button>
-
-      <div class="po-row">
-        <po-info class="po-sm-6" p-label="Titulo" [p-value]="item.titulo"></po-info>
-        <po-info class="po-sm-6" p-label="Prioridade" [p-value]="item.prioridade"></po-info>
-      </div>
-    </ng-template>
-
-    <ng-template p-list-view-detail-template let-item [p-show-detail]="showDetail">
-      <div class="po-row">
-        <po-info class="po-md-12" p-label="Descrição" [p-value]="item.descricao"></po-info>
-      </div>
-    </ng-template>
-  </po-list-view>
 </po-page-default>

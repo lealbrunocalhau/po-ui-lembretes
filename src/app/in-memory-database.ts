@@ -6,9 +6,9 @@ export class InMemoryDatabase implements InMemoryDbService{
   // tslint:disable-next-line:typedef
   createDb(){
     const lembretes: Lembrete[] = [
-      { id: 1, titulo: 'Aula de Ingles', prioridade: 'alta', descricao: 'Teste aula de ingles'},
-      { id: 2, titulo: 'Aula de Matematica', prioridade: 'baixa', descricao: 'Teste aula de Matematica'},
-      { id: 3, titulo: 'Aula de Programação', prioridade: 'alta', descricao: 'Teste aula de Programação'},
+      { id: 1, titulo: 'Aula de Inglês', prioridade: 'Alta', descricao: 'Teste aula de ingles'},
+      { id: 2, titulo: 'Aula de Matemática', prioridade: 'Baixa', descricao: 'Teste aula de Matematica'},
+      { id: 3, titulo: 'Aula de Programação', prioridade: 'Alta', descricao: 'Teste aula de Programação'},
     ];
 
     return { lembretes };
